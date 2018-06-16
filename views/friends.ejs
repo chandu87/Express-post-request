@@ -2,3 +2,7 @@
 <%friends.forEach((friend)=>{%>
     <li><%= friend %></li>
 <%});%>
+<form action="/addfriend" method="POST">
+    <input type="text" placeholder="Enter Name">
+    <button type="submit"> Add friend</button>
+</form>
