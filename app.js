@@ -3,16 +3,16 @@ const app = express();
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
-
+let friendsList = ["chandu", "shiva", "Sujith", "Mahender", "Rupesh"];
 app.get("/", function(req, res){
     res.render("home");
 });
 app.post("/addfriend", function(req, res){
-    console.log(req.body.newFriend);
-    res.send("This is a Post Request");
+    const newFriend = req.body.newFriend;
+    friendsList.push(newFriend);
+    res.redirect("/friends");
 });
 app.get("/friends", function(req, res){
-    const friendsList = ["chandu", "shiva", "Sujith", "Mahender", "Rupesh"];
     res.render("friends", {friends : friendsList});
 });
 app.listen(3000, function(){
